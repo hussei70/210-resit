@@ -1,0 +1,45 @@
+def task1(arr): 
+    if len(arr) >1: 
+        mid = len(arr)//2 # Firstly, find the middle of the array.
+
+        L = arr[:mid] # Then divide the array with the middle elements  
+        R = arr[mid:] # Divide them into half 
+        task1(L)  
+        task1(R) 
+  
+        i = j = k = 0
+          
+        
+        while i < len(L) and j < len(R): 
+            if L[i] < R[j]: 
+                arr[k] = L[i] 
+                i+=1
+            else: 
+                arr[k] = R[j] 
+                j+=1
+            k+=1
+          
+        # A check up for left elements
+        while i < len(L): 
+            arr[k] = L[i] 
+            i+=1
+            k+=1
+          
+        while j < len(R): 
+            arr[k] = R[j] 
+            j+=1
+            k+=1
+  
+
+def printList(arr): 
+    for i in range(len(arr)):         
+        print(arr[i],end=" ") 
+    print() 
+  
+if __name__ == '__main__': 
+    arr = [8, 15, 10, 4, 9, 14, 2, 11]  
+    print ("Unsorted Array", end="\n")  
+    printList(arr) 
+    task1(arr) 
+    print("Merge Sorted Array: ", end="\n") 
+    printList(arr) 
